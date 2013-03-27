@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7 ]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8 ]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> ><! --> <html class="no-js" lang="en"> <!-- <![endif]-->
+<head>
+  <meta charset='utf-8' />
+  <meta content='width=device-width' name='viewport' />
+  {%if page.title %}
+  <title>{{ page.title }} - {{ site.title }}</title>
+  {% else %}
+  <title>{{ site.title }}</title>
+  {% endif %}
+  {% for css in site.external_css %}
+  <link href='{{ font.url }}' rel='stylesheet' />
+  {% endfor %}
+  <link href='{{ site.url }}/asset/css/app.css' rel='stylesheet' />
+  <link href='{{ site.url }}/atom.xml' rel='alternate' title='Sitewide ATOM Feed' type='application/atom+xml' />
+  <script src='{{ site.url }}/asset/js/foundation/modernizr.foundation.js'></script>
+</head>
+<body>
+  <div class='contain-to-grid'>
+    <nav class='top-bar'>
+      <ul>
+        <li class='name'>
+          <h1>
+            <a href='{{ site.url }}'>{{ site.title }}</a>
+          </h1>
+        </li>
+      </ul>
+      <section>
+        <ul class='right'>
+          <li>
+            <a href='{{ site.url }}/about/'>About</a>
+          </li>
+        </ul>
+      </section>
+    </nav>
+  </div>
+  <div class='row'>
+    <div class='twelve-columns'>
+      {% if page.title %}
+      <h1>{{ page.title }}</h1>
+      {% endif %}
+      {% if page.header %}
+      <img alt='Header' src='{{ site.url }}/asset/image/header/{{ page.header }}' />
+      {% endif %}
+      {{ content }}
+    </div>
+  </div>
+  <footer>
+    <div class='row'>
+      <div class='twelve-columns'>&copy; 2013 {{ site.author }}. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>

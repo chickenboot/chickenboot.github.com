@@ -1,0 +1,17 @@
+# -----------------------------------------------
+# Jekyll Configuration
+# -----------------------------------------------
+
+markdown: kramdown
+permalink: pretty
+pygments: true
+exclude: Gemfile, Gemfile.lock, Makefile, Procfile, README.md, compass.rb
+
+# -----------------------------------------------
+# Site-specific Settings
+# -----------------------------------------------
+
+author: Colin Bradley
+author_email: colinbradley@gmail.com
+title: Mr. Pies' Perambulations
+url: http://mrpies.github.com
