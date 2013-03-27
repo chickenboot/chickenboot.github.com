@@ -2,7 +2,7 @@
 # Jekyll Configuration
 # -----------------------------------------------
 
-markdown: kramdown
+markdown: rdiscount
 permalink: pretty
 pygments: true
 exclude: Gemfile, Gemfile.lock, Makefile, Procfile, README.md, compass.rb
