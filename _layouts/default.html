@@ -5,18 +5,15 @@
 <!--[if IE 8 ]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if (gt IE 8)|!(IE)]> ><! --> <html class="no-js" lang="en"> <!-- <![endif]-->
 <head>
-  <meta charset='utf-8' />
-  <meta content='width=device-width' name='viewport' />
+  <meta charset='utf-8'>
+  <meta content='width=device-width' name='viewport'>
   {%if page.title %}
   <title>{{ page.title }} - {{ site.title }}</title>
   {% else %}
   <title>{{ site.title }}</title>
   {% endif %}
-  {% for css in site.external_css %}
-  <link href='{{ font.url }}' rel='stylesheet' />
-  {% endfor %}
-  <link href='{{ site.url }}/asset/css/app.css' rel='stylesheet' />
-  <link href='{{ site.url }}/atom.xml' rel='alternate' title='Sitewide ATOM Feed' type='application/atom+xml' />
+  <link href='{{ site.url }}/asset/css/app.css' rel='stylesheet'>
+  <link href='{{ site.url }}/atom.xml' rel='alternate' title='Sitewide ATOM Feed' type='application/atom+xml'>
   <script src='{{ site.url }}/asset/js/foundation/modernizr.foundation.js'></script>
 </head>
 <body>
@@ -44,7 +41,7 @@
       <h1>{{ page.title }}</h1>
       {% endif %}
       {% if page.header %}
-      <img alt='Header' src='{{ site.url }}/asset/image/header/{{ page.header }}' />
+      <img alt='Header' src='{{ site.url }}/asset/image/header/{{ page.header }}'>
       {% endif %}
       {{ content }}
     </div>

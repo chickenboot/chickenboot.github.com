@@ -8,7 +8,6 @@ gem 'redcarpet',  '=2.1.1'
 gem 'maruku',     '=0.6.0'
 gem 'rdiscount',  '=1.6.8'
 gem 'RedCloth',   '=4.2.9'
-gem "foreman"
-gem "haml"
 gem "zurb-foundation", '~> 3.2.4'
+gem 'haml'
 gem "compass"

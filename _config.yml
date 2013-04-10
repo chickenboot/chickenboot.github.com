@@ -5,7 +5,7 @@
 markdown: rdiscount
 permalink: pretty
 pygments: true
-exclude: Gemfile, Gemfile.lock, Makefile, Procfile, README.md, compass.rb
+exclude: Gemfile, Gemfile.lock, README.md, compass.rb, .gitignore, Rakefile, index.haml
 
 # -----------------------------------------------
 # Site-specific Settings
