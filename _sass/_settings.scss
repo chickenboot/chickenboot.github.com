@@ -1,5 +1,5 @@
 @import "foundation/common/ratios";
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,500);
 
 // Settings file containing Foundation defaults
 
@@ -27,7 +27,7 @@
 // Font Settings
 
 $headerFontFamily: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-$headerFontWeight: 700;
+$headerFontWeight: 500;
 // $headerFontStyle: normal;
 // $headerFontColor: #222;
 $bodyFontFamily: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
@@ -95,19 +95,19 @@ $bodyFontFamily: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, s
 
 // Top Bar Settings
 
-// $topBarBgColor: #222;
+$topBarBgColor: #fff; //rgb(226,233,255);
 // $topBarHeight: 45px;
 // $topBarHeightMobile: 45px;
 // $topBarBtmMargin: 30px;
 // $topBarTitleWeight: bold;
 // $topBarTitleSize: 17px;
-// $topBarLinkColor: #fff;
+$topBarLinkColor: #222;
 // $topBarLinkWeight: bold;
 // $topBarLinkSize: 13px;
-// $topBarDropBgColor: #222;
-// $topBarDropLinkColor: #fff;
-// $topBarDropToggleSize: 5px;
-// $topBarDropToggleColor: #fff;
+$topBarDropBgColor: $topBarBgColor;
+$topBarDropLinkColor: #222;
+$topBarDropToggleSize: 5px;
+$topBarDropToggleColor: #222;
 // $topBarDropToggleAlpha: 0.5;
 // $topBarSearchWidth: 200px;
 // $topBarBreakPoint: 940px; // Change to 9999px for always mobile layout

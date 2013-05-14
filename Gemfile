@@ -11,3 +11,4 @@ gem 'RedCloth',   '=4.2.9'
 gem "zurb-foundation", '~> 3.2.4'
 gem 'haml'
 gem "compass"
+gem "uglifier"

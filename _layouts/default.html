@@ -14,31 +14,32 @@
   {% endif %}
   <link href='{{ site.url }}/asset/css/app.css' rel='stylesheet'>
   <link href='{{ site.url }}/atom.xml' rel='alternate' title='Sitewide ATOM Feed' type='application/atom+xml'>
-  <script src='{{ site.url }}/asset/js/foundation/modernizr.foundation.js'></script>
+  <script src='{{ site.url }}/asset/js/modernizr.foundation.js'></script>
+  <script src='{{ site.url }}/asset/js/app.js'></script>
 </head>
 <body>
-  <div class='contain-to-grid'>
-    <nav class='top-bar'>
+  <div class='row'>
+    <div class='two columns'>
+      <h1>
+        <a href='/' title='Chicken Boot'>
+          <img src='http://placehold.it/400x600&amp;text=ChickB'>
+        </a>
+      </h1>
+      <h4>
+        <a href='#' title='Contact'>@chickenboot</a>
+      </h4>
+      <p>
+        Technical stuff viewed through leathery eyelets
+      </p>
       <ul>
-        <li class='name'>
-          <h1>
-            <a href='{{ site.url }}'>{{ site.title }}</a>
-          </h1>
+        <li>
+          <a href='#'>About</a>
         </li>
       </ul>
-      <section>
-        <ul class='right'>
-          <li>
-            <a href='{{ site.url }}/about/'>About</a>
-          </li>
-        </ul>
-      </section>
-    </nav>
-  </div>
-  <div class='row'>
-    <div class='twelve-columns'>
+    </div>
+    <div class='ten columns'>
       {% if page.title %}
-      <h1>{{ page.title }}</h1>
+      <h2>{{ page.title }}</h2>
       {% endif %}
       {% if page.header %}
       <img alt='Header' src='{{ site.url }}/asset/image/header/{{ page.header }}'>
@@ -48,7 +49,7 @@
   </div>
   <footer>
     <div class='row'>
-      <div class='twelve-columns'>&copy; 2013 {{ site.author }}. All rights reserved.</div>
+      <div class='twelve columns'>&copy; 2013 {{ site.author }}. All rights reserved.</div>
     </div>
   </footer>
 </body>

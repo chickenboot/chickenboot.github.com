@@ -2,7 +2,7 @@
 layout: default
 ---
 {% for post in site.posts limit:5 %}
-<h1>
+<h2>
   <a href='{{ post.url }}'>{{ post.title }}</a>
   <h6>{{ site.author }}</h6>
   <p>
@@ -13,5 +13,5 @@ layout: default
   <br>
   <hr>
   {% endunless %}
-</h1>
+</h2>
 {% endfor %}

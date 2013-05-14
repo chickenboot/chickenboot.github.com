@@ -16,23 +16,25 @@
 
   %link{:rel => "stylesheet", :href => "{{ site.url }}/asset/css/app.css" }
   %link{:rel => "alternate",  :href => "{{ site.url }}/atom.xml", :type => "application/atom+xml",  :title => "Sitewide ATOM Feed"}
-  %script{:src => "{{ site.url }}/asset/js/foundation/modernizr.foundation.js"}
+  %script{:src => "{{ site.url }}/asset/js/modernizr.foundation.js"}
+  %script{:src => "{{ site.url }}/asset/js/app.js"}
 
 %body
-  .contain-to-grid
-    %nav.top-bar
-      %ul
-        %li.name
-          %h1
-            %a{:href => "{{ site.url }}"} {{ site.title }}
-      %section
-        %ul.right
-          %li
-            %a{:href => "{{ site.url }}/about/"} About
   .row
-    .twelve-columns
+    .two.columns
+      %h1
+        %a{:href => '/', :title => 'Chicken Boot'}
+          %img{:src => 'http://placehold.it/400x600&text=ChickB'}
+      %h4
+        %a{:href => '#', :title => 'Contact'} @chickenboot
+      %p
+        Technical stuff viewed through leathery eyelets
+      %ul
+        %li
+          %a{:href => '#'} About
+    .ten.columns
       {% if page.title %}
-      %h1 {{ page.title }}
+      %h2 {{ page.title }}
       {% endif %}
 
 
@@ -44,7 +46,7 @@
 
   %footer
     .row
-      .twelve-columns &copy; 2013 {{ site.author }}. All rights reserved.
+      .twelve.columns &copy; 2013 {{ site.author }}. All rights reserved.
 
 :plain
   </html>
