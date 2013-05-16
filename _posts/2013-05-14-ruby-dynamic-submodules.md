@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Dynamically Creating Submodules in Ruby
+abstract: Creating a nested module if it doesn't already exist
 ---
 
 Tiny post here about an issue I was having today - I'm creating a simple Ruby class to generate a report that will be used officially as part of a largerproject/framework, but also needs to be useable in a standalone context (for a sort of 'preview' of the output on the client-side, where the final output is created on the server).

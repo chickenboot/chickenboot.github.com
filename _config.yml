@@ -14,5 +14,5 @@ exclude: Gemfile, Gemfile.lock, README.md, compass.rb, .gitignore, Rakefile, ind
 author: Colin Bradley
 author_email: colinbradley@gmail.com
 title: ChickenBootTech
-url: http://chickenboot.github.io
-#url: http://localhost:4000
+#url: http://chickenboot.github.io
+url: http://localhost:4000

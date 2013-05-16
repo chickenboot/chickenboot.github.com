@@ -22,3 +22,15 @@ code {
   @extend .highlight;
   @extend code;
 }
+
+h2 {
+  font-weight: 700;
+}
+
+.abstract {
+  margin: 0 0 17px;
+  padding: 6px 0px 5px 11px;
+  border-left: 4px solid #ddd;
+  line-height: 1.5;
+  color: #6f6f6f;
+}

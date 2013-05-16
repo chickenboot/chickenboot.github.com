@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Using Zurb Foundation 3 and Nanoc (0)
-abstract: Why Zurb, why Nanoc?
+abstract: Building a company website using Zurb and nanoc part 0 - an intro
 published: true
 ---
 

@@ -2,7 +2,7 @@
 layout: default
 title: Using Zurb Foundation 3 and Nanoc - Part 1
 abstract: Installation and Environment Setup
-published: true
+published: false
 ---
 
 > Note: These instructions are from my testing on Mac OS X - they might need some tweaking for Windows/Linux.

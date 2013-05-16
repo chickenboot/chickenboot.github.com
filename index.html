@@ -1,17 +1,18 @@
 ---
 layout: default
 ---
+<h2 class='text-center'>Chicken Blog</h2>
+<br>
 {% for post in site.posts limit:5 %}
-<h2>
+<h4>
+  {{ post.date | date_to_string }}
+  &raquo;
   <a href='{{ post.url }}'>{{ post.title }}</a>
-  <h6>{{ site.author }}</h6>
-  <p>
-    {{ post.content }}
-  </p>
-  {% unless forloop.last %}
-  <br>
-  <br>
-  <hr>
-  {% endunless %}
-</h2>
+</h4>
+<div class='abstract'>
+  {{ post.abstract }}
+</div>
+{% unless forloop.last %}
+<hr>
+{% endunless %}
 {% endfor %}
