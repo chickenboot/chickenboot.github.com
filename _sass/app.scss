@@ -1,0 +1,24 @@
+
+@import "_settings";
+@import "foundation";
+@import "pygments/autumn";
+
+code {
+  background-color: #f8f8f8;
+  background: #f8f8f8;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  font-weight: normal;
+}
+
+.highlight {
+  background: #f8f8f8;
+  border: 1px solid #eaeaea;
+  border-radius: 3px;
+  margin: 0 2px 1em 2px;
+  padding: 0 5px;
+}
+
+.code-link {
+  @extend .highlight;
+  @extend code;
+}

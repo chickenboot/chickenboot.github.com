@@ -43,10 +43,14 @@
       {% endif %}
 
       {{ content }}
-
-  %footer
-    .row
-      .twelve.columns &copy; 2013 {{ site.author }}. All rights reserved.
+      %hr
+        .row
+          .four.columns
+            %p @chickenboot is the psuedonym of Colin Bradley. 
+          .eight.columns
+            %a{:href => 'http://chickenboot.github.io/'} chickenboot.github.io
+            %br
+            %a{:href => 'http://twitter.com/chickenboot'} twitter.com/chickenboot
 
 :plain
   </html>
