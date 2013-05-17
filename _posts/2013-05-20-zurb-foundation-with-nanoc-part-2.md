@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Using Zurb Foundation 3 and Nanoc - Part 2
 abstract: Adding javascripts for a responsive top bar
 published: false

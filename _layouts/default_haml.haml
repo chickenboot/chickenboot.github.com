@@ -14,10 +14,10 @@
   %title {{ site.title }}
   {% endif %}
 
-  %link{:rel => "stylesheet", :href => "{{ site.url }}/asset/css/app.css" }
-  %link{:rel => "alternate",  :href => "{{ site.url }}/atom.xml", :type => "application/atom+xml",  :title => "Sitewide ATOM Feed"}
-  %script{:src => "{{ site.url }}/asset/js/modernizr.foundation.js"}
-  %script{:src => "{{ site.url }}/asset/js/app.js"}
+  %link{:rel => "stylesheet", :href => "/asset/css/app.css" }
+  %link{:rel => "alternate",  :href => "/atom.xml", :type => "application/atom+xml",  :title => "Sitewide ATOM Feed"}
+  %script{:src => "/asset/js/modernizr.foundation.js"}
+  %script{:src => "/asset/js/app.js"}
 
 %body
   .row
@@ -29,9 +29,9 @@
         %a{:href => '#', :title => 'Contact'} @chickenboot
       %p.text-center
         Technical stuff viewed through leathery eyelets
-      %ul.no-bullet
+      %ul.no-bullet.text-center
         %li
-          %a{:href => '#'} About
+          %a{:href => '/about'} About
     .ten.columns
       {% if page.title %}
       %h2 {{ page.title }}
@@ -39,18 +39,30 @@
 
 
       {% if page.header %}
-      %img{:alt => "Header", :src => "{{ site.url }}/asset/image/header/{{ page.header }}"}
+      %img{:alt => "Header", :src => "x/asset/image/header/{{ page.header }}"}
       {% endif %}
 
       {{ content }}
       %hr
-        .row
-          .four.columns
-            %p @chickenboot is the psuedonym of Colin Bradley. 
-          .eight.columns
-            %a{:href => 'http://chickenboot.github.io/'} chickenboot.github.io
-            %br
-            %a{:href => 'http://twitter.com/chickenboot'} twitter.com/chickenboot
-
+      .row
+        .twelve.columns
+          %a{:href => 'http://chickenboot.github.io/'} 
+            %i.icon-github
+            chickenboot.github.io
+          %br
+          %br
+          %a{:href => 'http://twitter.com/chickenboot'}
+            %i.icon-twitter
+            twitter.com/chickenboot
 :plain
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-41016914-1', 'chickenboot.com');
+      ga('send', 'pageview');
+
+    </script>
   </html>

@@ -2,6 +2,7 @@
 @import "_settings";
 @import "foundation";
 @import "pygments/autumn";
+@import "font-awesome/font-awesome";
 
 code {
   background-color: #f8f8f8;
@@ -33,4 +34,8 @@ h2 {
   border-left: 4px solid #ddd;
   line-height: 1.5;
   color: #6f6f6f;
+}
+
+ul {
+  margin-left: 17px;
 }

@@ -2,26 +2,20 @@
 layout: default
 ---
 
-About
------
+## About
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pharetra
-mollis fringilla. Mauris sapien urna, cursus luctus consequat at, varius ut
-ipsum. Etiam neque diam, consectetur et pellentesque et, vulputate in est.
-Curabitur sed erat risus. Lorem ipsum dolor sit amet, consectetur adipiscing
-elit. Praesent ullamcorper eros non lorem venenatis quis ultricies diam
-tincidunt. Duis vestibulum luctus diam vel mattis. Aliquam in massa et tortor
-sodales placerat vel eu mi. Integer tincidunt lectus id lacus fermentum
-sodales. Vestibulum posuere ante vitae risus pharetra sit amet porttitor elit
-dapibus.
+This is the personal blog of Colin Bradley, freelance technologist and small businessman ("small business" man rather than a diminutive man of business).
 
-Integer lacus lorem, interdum vel pharetra eu, elementum non enim. Fusce
-dictum euismod magna, ut interdum elit suscipit ut. Sed molestie faucibus
-sollicitudin. Sed vel quam dui, ac interdum enim. Proin mi sapien, faucibus id
-pharetra ut, ornare quis leo. Phasellus sit amet orci in magna hendrerit
-convallis ullamcorper ac metus. Aenean posuere nisi sed ante semper a euismod
-ante rhoncus. Donec at dui eros, at varius eros. Proin molestie, ipsum sed
-vehicula volutpat, turpis tortor sollicitudin dui, vitae convallis enim risus
-sit amet nisl. Donec vel tellus et lacus iaculis luctus. Proin tempus
-venenatis lorem sagittis vulputate. Morbi non arcu tortor. In hac habitasse
-platea dictumst.
+### Stuff and interests
+
+  * Partner in the delightful wedding invitation business [The Vintage Invite Company](http://thevintageinvite.com)
+  * .NET developer in the finance business
+  * Ruby on Rails hacker for some private (for now) side projects
+
+### Acknowledgements
+
+  * *Artwork (logo)*: [Dan Morley](http://www.danmorley.com/)
+  * *CSS*: [Zurb Foundation](http://foundation.zurb.com/)
+  * *Site Generation*: [Jekyll](http://jekyllrb.com/)
+  * *Hosting*: [Github Pages](http://pages.github.com/)
+  * *Comments*: [Disqus](http://disqus.com/)

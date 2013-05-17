@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Using Zurb Foundation 3 and Nanoc - Part 1
 abstract: Installation and Environment Setup
 published: false

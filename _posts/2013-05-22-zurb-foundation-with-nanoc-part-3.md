@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Using Zurb Foundation 3 and Nanoc - Part 3
 abstract: Building a simple blog
 published: false

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Dynamically Creating Submodules in Ruby
 abstract: Creating a nested module if it doesn't already exist
 ---
