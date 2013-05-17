@@ -1,11 +1,21 @@
 ---
 layout: post
-title: Using Zurb Foundation 3 and Nanoc - Part 1
-abstract: Installation and Environment Setup
+title: Using Zurb Foundation 3 and Nanoc (1)
+abstract: Getting Started&#58; Installation and Environment Setup
 published: false
 ---
 
-> Note: These instructions are from my testing on Mac OS X - they might need some tweaking for Windows/Linux.
+Let's start with some conventions I'm going to follow for the duration of this series.
+
+### Conventions
+
+First note: these instructions come from my testing on Mac OS X&#151;they may need tweaking or rewriting for Linux or Windows. 
+
+Secondly, I'm using the excellent [Sublime Text 2](http://www.sublimetext.com) as my editor. When you see `subl filename`, that's me opening a file using the [command line tools](http://www.sublimetext.com/docs/2/osx_command_line.html). I've kept these commands in so it's crystal clear what I'm doing.
+
+Finally, wherever possible, I've added a link to a tagged version of the related file in the public repository that contains all of the site code.
+
+All that said, let's get started.
 
 ### Installing nanoc and Creating a Project
 
@@ -24,19 +34,18 @@ vintageinvite$ nanoc compile
 vintageinvite$ nanoc view
 {% endhighlight %}
 
-This shows the default nanoc new project landing page at `localhost:3000/`. Sweet.
+This shows nanoc's default new project landing page at `localhost:3000/`. Sweet.
 
 ### Setting Up Dependencies
 
-The next job is to set up the environment, starting by setting up [bundler](http://gembundler.com) for the ruby libraries I'll be depending on, using a Gemfile (edit using your favourite editor, subl here refers to [Sublime Text 2](http://www.sublimetext.com)):
+The next job is to set up the environment, starting by setting up [bundler](http://gembundler.com) for the ruby libraries I'll be depending on, using a Gemfile:
 
 {% highlight bash %}
 vintageinvite$ gem install bundler    
 vintageinvite$ subl Gemfile
 {% endhighlight %}
 
-And inside `Gemfile`:
-
+<div class="code-link">File: <a href="https://github.com/mrpies/vintageinvite/blob/v1.0/Gemfile">Gemfile</a></div>
 {% highlight ruby %}
 source :rubygems
 
@@ -68,7 +77,6 @@ Using zurb-foundation (3.2.5)
 Using bundler (1.3.0) 
 Your bundle is complete! Use \`bundle show \[gemname\]\` to see where a bundled gem is installed.
 {% endhighlight %}
-<span class="code-link"><a href="https://github.com/mrpies/vintageinvite/blob/v1.0/Gemfile">Gemfile</a></span>
 
 The gems we're using are: 
 
@@ -93,8 +101,10 @@ vintageinvite$ rm content/stylesheet.css
 To [integrate compass](http://compass-style.org/help/tutorials/integration/) with nanoc, I need to create a `compass.rb` file:
 
 {% highlight bash %}
-vintageinvite$ subl [compass.rb](https://github.com/mrpies/vintageinvite/blob/v1.0/compass.rb)
+vintageinvite$ subl compass.rb
 {% endhighlight %}
+
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.0/compass.rb">compass.rb</a></div>
 
 {% highlight ruby %}
 require "zurb-foundation"
@@ -118,7 +128,6 @@ preferred_syntax = :scss
 relative_assets = true
 {% endhighlight %}
 
-
 We're telling compass where the necessary directories are for content, as well as the output directory for generated stylesheets (though we aren't using all of the power of compass, we need to make sure these directories are correct for the next step).
 
 Now we can use compass to install Foundation in our project:
@@ -135,11 +144,11 @@ vintageinvite$ rm index.html humans.txt robots.txt MIT-LICENSE.txt
 
 The final configuration step for is changing the nanoc `Rules` file, to include compass and to process our assets directory correctly:
 
-[Rules](https://github.com/mrpies/vintageinvite/blob/v1.0/Rules)
 {% highlight bash %}
 vintageinvite$ subl Rules
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.0/Rules">Rules</a></div>
 {% highlight ruby %}
 require 'compass'
 
@@ -215,8 +224,7 @@ vintaginvite$ mv layouts/default.html layouts/default.haml
 vintaginvite$ subl layouts/default.haml
 {% endhighlight %}
 
-[layouts/default.haml](https://github.com/mrpies/vintageinvite/blob/v1.0/layouts/default.haml)
-
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.0/layouts/default.haml">layouts/default.haml</a></div>
 {% highlight haml %}
 !!! 5
 %html

@@ -4,7 +4,19 @@
   ---
 #post
   {{ content }}
-
+  .row
+    .six.columns
+      %b
+        {% if page.previous.url %}
+        %a{:href=>"{{page.previous.url}}", :title => "{{page.previous.title}}"} &laquo; Previous
+        {% endif %}
+    .six.columns
+      .right
+        %b
+          {% if page.next.url %}
+          %a{:href=>"{{page.next.url}}", :title => "{{page.next.title}}"} Next &raquo;
+          {% endif %}
+      
 :plain
     <div id="disqus_thread"></div>
     <script type="text/javascript">

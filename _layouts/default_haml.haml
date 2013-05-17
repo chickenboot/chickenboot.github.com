@@ -26,21 +26,20 @@
         %a{:href => '/', :title => 'Chicken Boot'}
           %img{:src => '/asset/image/logo.png'}
       %h5.text-center
-        %a{:href => '#', :title => 'Contact'}
+        %a{:href => '/', :title => 'Contact'}
           %b @chickenboot
-      %p.text-center
-        Technical stuff viewed through leathery eyelets
-      %ul.no-bullet.text-center
-        %li
+      .blurb
+        The world as seen through leathery eyelets
+      .text-center
+        %b
           %a{:href => '/about'} About
     .ten.columns
       {% if page.title %}
       %h2 {{ page.title }}
       {% endif %}
 
-
       {% if page.header %}
-      %img{:alt => "Header", :src => "x/asset/image/header/{{ page.header }}"}
+      %img{:alt => "Header", :src => "/asset/image/header/{{ page.header }}"}
       {% endif %}
 
       {{ content }}

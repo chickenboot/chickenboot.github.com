@@ -3,6 +3,24 @@ layout: default
 ---
 <div id='post'>
   {{ content }}
+  <div class='row'>
+    <div class='six columns'>
+      <b>
+        {% if page.previous.url %}
+        <a href='{{page.previous.url}}' title='{{page.previous.title}}'>&laquo; Previous</a>
+        {% endif %}
+      </b>
+    </div>
+    <div class='six columns'>
+      <div class='right'>
+        <b>
+          {% if page.next.url %}
+          <a href='{{page.next.url}}' title='{{page.next.title}}'>Next &raquo;</a>
+          {% endif %}
+        </b>
+      </div>
+    </div>
+  </div>
 </div>
   <div id="disqus_thread"></div>
   <script type="text/javascript">

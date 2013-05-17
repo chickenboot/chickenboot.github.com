@@ -26,25 +26,25 @@
         </a>
       </h1>
       <h5 class='text-center'>
-        <a href='#' title='Contact'>
+        <a href='/' title='Contact'>
           <b>@chickenboot</b>
         </a>
       </h5>
-      <p class='text-center'>
-        Technical stuff viewed through leathery eyelets
-      </p>
-      <ul class='no-bullet text-center'>
-        <li>
+      <div class='blurb'>
+        The world as seen through leathery eyelets
+      </div>
+      <div class='text-center'>
+        <b>
           <a href='/about'>About</a>
-        </li>
-      </ul>
+        </b>
+      </div>
     </div>
     <div class='ten columns'>
       {% if page.title %}
       <h2>{{ page.title }}</h2>
       {% endif %}
       {% if page.header %}
-      <img alt='Header' src='x/asset/image/header/{{ page.header }}'>
+      <img alt='Header' src='/asset/image/header/{{ page.header }}'>
       {% endif %}
       {{ content }}
       <hr>
