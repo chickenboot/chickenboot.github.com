@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Using Zurb Foundation 3 and Nanoc (1)
-abstract: Getting Started&#58; Installation and Environment Setup
-published: false
+title: Using Zurb Foundation 3 and nanoc (1)
+abstract: Foundation and nanoc Part 1, Getting Started&#58; Installation and Environment Setup
+published: true
 ---
 
 Let's start with some conventions I'm going to follow for the duration of this series.
@@ -217,7 +217,7 @@ To switch the layouts from erb enabled html we just need to change the layout li
 layout '*', :haml, :format => :html5
 {% endhighlight %}
 
-And now we need to change the default layout - I've also added a simple Foundation top-bar nav:
+And now we need to change the default layout&#151;I've also added a simple Foundation top-bar nav:
 
 {% highlight bash %}
 vintaginvite$ mv layouts/default.html layouts/default.haml
