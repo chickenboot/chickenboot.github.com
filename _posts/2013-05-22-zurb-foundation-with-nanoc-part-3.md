@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Using Zurb Foundation 3 and nanoc (3)
-abstract: Foundation and nanoc Part 3, Building a Blog
+abstract: Foundation and nanoc Part 3&#58; Building a Blog
 published: false
 ---
 
@@ -23,6 +23,7 @@ We want to reuse the existing nanoc blogging helpers, so we'll add some includes
 vintageinvite$ subl lib/includes.rb
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.2/lib/includes.rb">lib/includes.rb</a></div>
 {% highlight ruby %}
 include Nanoc3::Helpers::Blogging
 include Nanoc3::Helpers::Tagging
@@ -50,13 +51,17 @@ First we add the [kramdown](http://kramdown.rubyforge.org/) gem, which is a libr
 vintageinvite$ subl Gemfile
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.2/Gemfile">Gemfile</a></div>
 {% highlight ruby %}
 gem 'kramdown'
+gem 'listen'
 {% endhighlight %}
 
 {% highlight bash %}
 vintageinvite$ bundle install
 {% endhighlight %}
+
+You'll notice I've also added the *listen* gem, so that I can use the `nanoc watch` command (which keeps an eye on changed files, and compiles them on the fly, so you don't need to continuously compile and view).
 
 Then we need to tell nanoc that our blog posts should be converted by this library:
 
@@ -64,6 +69,7 @@ Then we need to tell nanoc that our blog posts should be converted by this libra
 vintageinvite$ subl Rules
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.2/Rules">Rules</a></div>
 {% highlight ruby %}
 compile '/blog/posts/*' do
   filter :kramdown
@@ -77,6 +83,7 @@ Now we can create a post to test it all:
 subl content/blog/posts/2013-05-22-welcome-to-the-blog.md
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.2/content/blog/posts/2013-05-22-welcome-to-the-blog.md">content/blog/posts/2013-05-22-welcome-to-the-blog.md</a></div>
 {% highlight ruby %}
 ---
 title: "Welcome to the Blog"
@@ -103,6 +110,7 @@ We can borrow a few more tricks from Dave Clark's tutorial to improve the routes
 vintageinvite$ subl Rules
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.2/Rules">Rules</a></div>
 {% highlight ruby %}
 route '/blog/posts/*' do
   y,m,d,slug = /([0-9]+)\-([0-9]+)\-([0-9]+)\-([^\/]+)/.match(item.identifier).captures
@@ -119,6 +127,7 @@ Next on Dave's agenda: we can create a separate layout specifically for our blog
 vintageinvite$ subl layouts/post.haml
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.2/layouts/post.haml">layouts/post.haml</a></div>
 {% highlight haml %}
 = render 'default' do
   .post
@@ -135,6 +144,7 @@ All we need to do to use this new layout, is to switch it in the `Rules` file:
 vintageinvite$ subl Rules
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.2/Rules">Rules</a></div>
 {% highlight ruby %}
 compile '/blog/posts/*' do
   filter :kramdown
@@ -142,4 +152,4 @@ compile '/blog/posts/*' do
 end
 {% endhighlight %}
 
-If you compile and view the blog post now, you'll notice that there's two headers&#151;this is because we have added the title to the post template, and have a title in the post. We'll fix this later when we add some styling and create the blog homepage.
+If you compile and view the blog post now (or are using `nanoc watch` of course, you'll notice that there's two headers&#151;this is because we have added the title as a header to the post template, and we have a header in the post. We'll fix this later when we add some styling and create the blog homepage.

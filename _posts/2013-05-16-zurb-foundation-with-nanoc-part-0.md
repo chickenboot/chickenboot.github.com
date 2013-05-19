@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Using Zurb Foundation 3 and nanoc (0)
-abstract: Building a company website using Foundation and nanoc part 0&#58; Introduction
+abstract: Building a Company Website with Foundation and nanoc Part 0&#58; Introduction
 published: true
 ---
 

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Using Zurb Foundation 3 and Nanoc (2)
-abstract: Foundation and nanoc Part 2, Adding Javascript for a Responsive Top Bar
-published: false
+abstract: Foundation and nanoc Part 2&#58; Adding Javascript for a Responsive Top Bar
+published: true
 ---
 
 The plan for the final company site is that it should be rich and responsive (meaning it plays nicely across many devices). To start that big old ball rolling, we will look at the steps required to make the top/menu bar nav responsive, using the foundation javascripts. This should get the infrastructure in place for any other javascript we want to add later on.
@@ -80,7 +80,9 @@ vintageinvite$ subl Gemfile
 gem 'uglifier'
 {% endhighlight %}
 
-And now we just need to put it all together in the `Rules` file:
+### Rules and Layout
+
+Now we just need to put it all together in the `Rules` file:
 
 {% highlight bash %}
 vintageinvite$ subl Rules
@@ -97,6 +99,38 @@ route '/assets/javascripts/*' do
   filename = File.basename(item.identifier)
   '/assets/' + filename + '.js' if @config[:javascripts][:passthrough].include?(filename)
 end
+{% endhighlight %}
+
+The last thing to do is include the javascript in our default layout - we'll load `modernizr` in the head as discussed above, and the main `app.js` file at the foot (to ensure the site is rendered before loading up the javascript).
+
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.1/layouts/default.haml">layouts/default.haml</a></div>
+{% highlight haml %}
+!!! 5
+%html
+  %head
+    %meta{:charset => "utf-8"}
+    %title
+      A Brand new nanoc site -
+      = item[:title]
+    %link{:rel => "stylesheet", :href => "/assets/app.css" }
+    %script{:src => "/assets/modernizr.foundation.js" }
+  %body
+    .contain-to-grid
+      %nav.top-bar
+        %ul
+          %li.name
+            %a{:href => "/"} the vintage invite co
+          %li.toggle-topbar
+            %a{:href => "#"}
+        %section
+          %ul.right
+            %li
+              %a{:href => "#"} Contact
+    .row
+      .twelve.columns
+        = yield
+
+    %script{:src => "/assets/app.js" }
 {% endhighlight %}
 
 Now if we compile and view the site, we should get a lovely responsive top bar&#151;I've tested it below by shrinking the width of the Chrome window, and clicking on the arrow when it appears:
