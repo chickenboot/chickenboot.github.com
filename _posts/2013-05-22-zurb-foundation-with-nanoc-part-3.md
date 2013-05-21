@@ -2,7 +2,7 @@
 layout: post
 title: Using Zurb Foundation 3 and nanoc (3)
 abstract: Foundation and nanoc Part 3&#58; Building a Blog
-published: false
+published: true
 ---
 
 The first thing we're going to get up and running on the site is a blog&#151;because of the incremental way we're starting the business, first and foremost we want to talk about ourselves! 
@@ -11,13 +11,13 @@ I've used an excellent resource for [building a static blog with nanoc](http://c
 
 ### Directories and Helpers
 
-We're using a slightly different structure to Dave as our site isn't just a blog&#151;it's only one part of our company site. We're making a subdirectory, imaginitively entitled `blog`, to contain all the blog related files.
+We're using a slightly different structure to Dave as our site isn't just a blog&#151;it's just one part of our company site. As such, we're making a subdirectory, imaginatively entitled `blog`, to contain all the blog related files.
 
 {% highlight bash %}
 vintageinvite$ mkdir -p content/blog/posts
 {% endhighlight %}
 
-We want to reuse the existing nanoc blogging helpers, so we'll add some includes to the `lib` directory. Rather than putting it in `default.rb`, I've gone with creating a new file, `includes.rb`:
+Because a blog is a fairly common usage of a static site generator, nanoc ships with some helpers. To use these, we need to add some includes to the `lib` directory. Rather than adding to `default.rb` (as Dave does above), I've gone with creating a new file, `includes.rb`:
 
 {% highlight bash %}
 vintageinvite$ subl lib/includes.rb
@@ -39,11 +39,13 @@ Dave Clark helpfully explains these in his tutorial:
 
 > The `Rendering` helper lets us use view partials, which allows us to nest layouts (this’ll let us built sub-layouts for posts)
 
-> The `LinkTo` helper lets us construct URLs for other items (we’ll use this in our index item to link to multiple posts)
+> The `LinkTo` helper lets us construct URLs for other items
+
+`LinkTo` and `Rendering` include helpers that will be familiar to a Rails developer - `link_to` and `render` are frequently used in Rails views.
 
 ### Markdown
 
-We also need to add a bit more configuration. The plan for the blog is to allow any of the team to write their own posts, which means writing in html or haml would be a bit of an ask for the non-technically-minded members (and would also still be a pain for the rest of us!). That's why someone invented the "lightweight markup language" (or "clever text-to-html converter" as I prefer), and pretty much the de-facto standard language is [Markdown](http://daringfireball.net/projects/markdown/), so let's add support for that. 
+We still need to add a bit more configuration. The plan for the blog is to allow any of the team to write their own posts&#151;writing in html or haml would be a bit of an ask for the non-technically-minded members (and would still be a pain for the rest of us!). That's why someone invented the *"lightweight markup language"* (or "clever text-to-html converter" as I prefer), and pretty much the de-facto language is [Markdown](http://daringfireball.net/projects/markdown/), so let's add support for that. 
 
 First we add the [kramdown](http://kramdown.rubyforge.org/) gem, which is a library that does the conversion:
 
@@ -61,9 +63,9 @@ gem 'listen'
 vintageinvite$ bundle install
 {% endhighlight %}
 
-You'll notice I've also added the *listen* gem, so that I can use the `nanoc watch` command (which keeps an eye on changed files, and compiles them on the fly, so you don't need to continuously compile and view).
+You'll notice I've also added the *listen* gem, so that I can use the `nanoc watch` command (which keeps an eye on changed files, and compiles them on the fly, so you don't need to continuously `compile` and `view`).
 
-Then we need to tell nanoc that our blog posts should be converted by this library:
+Then we need to tell nanoc that our blog posts should be converted by this library, by adding a compilation rule:
 
 {% highlight bash %}
 vintageinvite$ subl Rules
@@ -84,7 +86,7 @@ subl content/blog/posts/2013-05-22-welcome-to-the-blog.md
 {% endhighlight %}
 
 <div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.2/content/blog/posts/2013-05-22-welcome-to-the-blog.md">content/blog/posts/2013-05-22-welcome-to-the-blog.md</a></div>
-{% highlight ruby %}
+{% highlight haml %}
 ---
 title: "Welcome to the Blog"
 created_at: 2013-05-22 09:00:00 +0000
@@ -96,7 +98,7 @@ kind: article
 I will be replaced by a sensical post long before I get published to the web!
 {% endhighlight %}
 
-The post starts with the metadata (between the two `---` lines) which we'll be using later (it isn't rendered automatically)&#151;we need the `kind: article` line to tell the nanoc blogging helper that this item should be handled as a blog post.
+The post starts with the metadata (between the two `---` lines) which we'll be using later (it isn't rendered)&#151;we need the `kind: article` line to tell the nanoc blogging helper that this item should be handled as a blog post.
 
 Now we can compile and view the site, and access our blog post at `/blog/posts/2013-05-22-welcome-to-the-blog/`, and see this:
 
@@ -119,9 +121,9 @@ route '/blog/posts/*' do
 end
 {% endhighlight %}
 
-This changes the url we used above to `/blog/posts/2013/05/welcome-to-the-blog/` which is much nicer.
+This changes the url (using a [regular expression](http://en.wikipedia.org/wiki/Regular_expression)) above to `/blog/posts/2013/05/welcome-to-the-blog/` which is much nicer.
 
-Next on Dave's agenda: we can create a separate layout specifically for our blog posts, by creating a new file in the layouts folder.
+Next on Dave's agenda: we can create a new layout specifically for our blog posts, by creating a new file in the layouts folder.
 
 {% highlight bash %}
 vintageinvite$ subl layouts/post.haml
@@ -136,7 +138,7 @@ vintageinvite$ subl layouts/post.haml
     %article= yield
 {% endhighlight %}
 
-We're putting a the title from the metadata in as a header (with `item[:title]`), adding the creation date (processed through the `Nanoc::Helpers::Blogging` method `attribute_to_time`, and pretty-printed using [`strftime`](http://apidock.com/ruby/DateTime/strftime)) and finally yielding the content wrapped in an `article` tag.
+We're using the default layout (by using the `Nanoc::Helpers::Rendering` helper), and in the content for that, we're putting the title from the metadata in as a header (with `item[:title]`), adding the creation date (processed through the `Nanoc::Helpers::Blogging` method `attribute_to_time`, and pretty-printed using [`strftime`](http://apidock.com/ruby/DateTime/strftime)) and finally yielding the content wrapped in an `article` tag.
 
 All we need to do to use this new layout, is to switch it in the `Rules` file:
 
@@ -152,4 +154,4 @@ compile '/blog/posts/*' do
 end
 {% endhighlight %}
 
-If you compile and view the blog post now (or are using `nanoc watch` of course, you'll notice that there's two headers&#151;this is because we have added the title as a header to the post template, and we have a header in the post. We'll fix this later when we add some styling and create the blog homepage.
+If you compile and view the blog post now (or are using `nanoc watch`), you'll notice that there are two headers&#151;this is because our post template uses the title as a header, but we still have a header in the post. We'll fix this later when we add some styling and create the blog homepage.

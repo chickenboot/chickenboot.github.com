@@ -77,16 +77,13 @@ title: Blog
       %li Tag 1
       %li Tag 2
       %li Tag 3
-    %h5 Archives
-    %ul.no-bullet
-      %li May 2013
 {% endhighlight %}
 
 Because of the way the nanoc `Rules` file is routing, the address for this file will be `/blog/index.html` or just `/blog/`, which is exactly where we want it.
 
 We're using the [Foundation grid](http://foundation.zurb.com/old-docs/f3/grid.php) to create a ten column section for posts and a two column section for the links. In the main section, each article from the `sorted_articles` collection (which is a function in the nanoc [Blogging](http://nanoc.ws/docs/api/Nanoc/Helpers/Blogging.html) helper) is being rendered with the date and title as the header, and the full content of the article below.
 
-The navigation on the right hand side is just a placeholder for the tags and archive sections that will need more work.
+The navigation on the right hand side is just a placeholder for the tags section that will need more work.
 
 ### Minor Tweaks
 
@@ -111,4 +108,57 @@ We also need a link in our top bar navigation so the blog can be accessed from t
         %a{:href => "/blog/"} Blog
 {% endhighlight %}
 
+### Blogging Helpers
 
+The nanoc helpers we're already using are great, but aren't extensive enough for us to implement the blog landing page. So we're going to add some helper functions to a new file `blog.rb` in the `lib` directory. For this, I've taken inspiration from another excellent resource, Mario Gutierrez's (nanoc3_blog)[https://github.com/mgutz/nanoc3_blog] example. 
+
+Let's start by creating a helper function to return all of the tags for a set of pages - to save time, this function will also take care of a simple ranking/item count, returning the tags as a `Hash` of `tag => item_count`:
+
+{% highlight ruby %}
+def all_tags(items = nil, sort = false)
+  items ||= @items
+  tags = {}
+  items.each do |i|
+    (i[:tags] || []).each{|t| tags[t] ||= 0; tags[t] += 1 }
+  end
+  sort ? tags.sort {|tl, tr| tl[1] <=> tr[1]} : tags
+end
+{% endhighlight %}
+
+This function goes through each item (either the passed in items, or the global all items) collecting the number of occurrences of each tag into a Hash.
+
+The next thing we need to do is create a landing page for each tag, so that when a user clicks a tag link, they get a list of all items with that tag. Because these landing pages will be similar to the blog homepage, I'm going to make a partial from the homepage template:
+
+{% highlight haml %}
+- posts = defined?(tag) ? items_with_tag(tag) : sorted_articles
+
+%h2= page_title
+.row
+  .ten.columns
+    - posts.each do |article|
+      %h3
+        = attribute_to_time(article[:created_at]).strftime('%d %B %Y')
+        &raquo;
+        = link_to article[:title], article.path
+      = article.compiled_content
+      %hr
+  .two.columns
+    %h5 Tags
+    %ul.no-bullet
+      - all_tags(nil, true).each do |t,v|
+        %li= link_for_tag(t, '/blog/tags/')
+{% endhighlight %}
+
+We've just taken the `blog.haml` file from earlier, and changed the source of the posts from `sorted_articles` to the nanoc helper function `items_with_tag` if there's a tag passed in, otherwise we default to all the articles as before. The other variable used is `page_title`, which the partial expects to have passed in. I've also filled in the Tags section with a list of sorted tag links.
+
+We can remove this duplicate code from `blog.haml` now, and replace it with:
+
+{% highlight haml %}
+---
+title: Blog
+---
+= render '_blog_page', :page_title => 'The Vintage Invite Company Blog'
+
+{% endhighlight %}
+
+The final step is to generate these tag pages. We can do this in the nanoc preprocessort
