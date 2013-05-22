@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Using Zurb Foundation 3 and nanoc (0)
-abstract: Building a Company Website with Foundation and nanoc Part 0&#58; Introduction
-published: true
+title: Building a company website with Foundation 3 and nanoc
+abstract: An introduction to a series on building a company site with Zurb's Foundation and the static site generator nanoc
+published: true 
 ---
 
 I thought I'd start the meat of my technical blog with a long, drawn-out, potentially dull series on how I'm setting up a simple site for a company I'm part of: [The Vintage Invite Company](http://www.thevintageinvite.com). I hoped it might prove useful for any fellow non-web-specialist hackers, and also motivate me to get it done in the _right_ way (I would normally just hack it together, but being forced to try and explain things means I will have to think about it more!).

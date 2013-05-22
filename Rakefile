@@ -7,18 +7,18 @@ LAYOUT_SRC = FileList.new('_layouts/*.haml', 'index.haml')
 COFFEE_SRC = FileList.new('_js/*.coffee')
 FOUNDATION = 
 [ 
-    'modernizr.foundation', 
+#    'modernizr.foundation', 
     'jquery', 
 #    'jquery.foundation.forms',
 #    'jquery.foundation.reveal',
 #    'jquery.foundation.orbit',
-    'jquery.foundation.navigation',
-    'jquery.foundation.buttons',
+#    'jquery.foundation.navigation',
+#    'jquery.foundation.buttons',
 #    'jquery.foundation.tabs',
 #    'jquery.foundation.tooltips',
 #    'jquery.foundation.accordion',
-    'jquery.placeholder',
-    'jquery.foundation.alerts',
+#    'jquery.placeholder',
+#    'jquery.foundation.alerts',
     'jquery.foundation.topbar',
 #    'jquery.foundation.joyride',
 #    'jquery.foundation.clearing',
@@ -48,11 +48,11 @@ def concatenate_files(input_files)
 end
 
 def minify_js(js_data, output_filename)
-  File.open(output_filename, "a+") {|out| out.puts Uglifier.compile(js_data) }
+  File.open(output_filename, "w") {|out| out.puts Uglifier.compile(js_data) }
 end
 
 def pass_through(js_data, output_filename)
-  File.open(output_filename, "a+") {|out| out.puts js_data }
+  File.open(output_filename, "w") {|out| out.puts js_data }
 end
 
 task :build => LAYOUT do

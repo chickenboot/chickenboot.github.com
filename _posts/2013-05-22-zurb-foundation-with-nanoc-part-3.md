@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Using Zurb Foundation 3 and nanoc (3)
-abstract: Foundation and nanoc Part 3&#58; Building a Blog
+title: Zurb Foundation and nanoc&#58; Building a Blog
+abstract: Building a basic blog infrastructure in nanoc, using Markdown
 published: true
 ---
 
@@ -121,7 +121,7 @@ route '/blog/posts/*' do
 end
 {% endhighlight %}
 
-This changes the url (using a [regular expression](http://en.wikipedia.org/wiki/Regular_expression)) above to `/blog/posts/2013/05/welcome-to-the-blog/` which is much nicer.
+This changes the url above (using a [regular expression](http://en.wikipedia.org/wiki/Regular_expression)) to `/blog/posts/2013/05/welcome-to-the-blog/` which is much nicer.
 
 Next on Dave's agenda: we can create a new layout specifically for our blog posts, by creating a new file in the layouts folder.
 

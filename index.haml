@@ -6,7 +6,7 @@
 %h2.text-center Chicken Blog
 %br
 
-{% for post in site.posts limit:5 %}
+{% for post in site.posts limit:10 %}
 %h4
   {{ post.date | date_to_string }}
   &raquo;

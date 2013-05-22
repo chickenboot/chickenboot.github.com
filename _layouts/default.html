@@ -17,6 +17,9 @@
   <script src='/asset/js/modernizr.foundation.js'></script>
   <script src='/asset/js/app.js'></script>
   <meta content='biv9AyAw4OVffEkG18O9nLmOoAPLyLHR-Wgbxmur7Go' name='google-site-verification'>
+  {%if page.abstract %}
+  <meta content='{{ page.abstract }}' name='description'>
+  {% endif %}
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

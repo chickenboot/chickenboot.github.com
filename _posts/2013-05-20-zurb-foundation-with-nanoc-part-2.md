@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Using Zurb Foundation 3 and Nanoc (2)
-abstract: Foundation and nanoc Part 2&#58; Adding Javascript for a Responsive Top Bar
+title: Zurb Foundation and nanoc&#58; Foundation Javascripts
+abstract: Installing Foundation javascripts, concatenating and minifying and activating the responsive top bar
 published: true
 ---
 
