@@ -29,6 +29,6 @@ Same question first up: why a static website generator at all? How else would yo
 
 I actually started my project using [Jekyll](https://github.com/mojombo/jekyll), which is the de-facto static site generator for blogs. It is great for blogging (hence its usage for this blog), but like with Bootstrap, I found it difficult to figure out how to do some of the more complicated things for the site that didn't just follow the blog pattern.
 
-I then heard about nanoc (on a [Hacker News](http://news.ycombinator.com) thread), and it has so far been the perfect tool for me so far. It's not quite as easy as Jekyll to get started with, but with the right documentation and a bit of Ruby knowledge (which I thankfully possess) it has just the right amount of flexibility and simplicity.
+I then heard about nanoc (on a [Hacker News](http://news.ycombinator.com) thread), and it has so far been the perfect tool for me. It's not quite as easy as Jekyll to get started with, but with the right documentation and a bit of Ruby knowledge (which I thankfully possess) it has just the right amount of flexibility and simplicity.
 
 Enough rambling. The next post will actually cover getting started.
