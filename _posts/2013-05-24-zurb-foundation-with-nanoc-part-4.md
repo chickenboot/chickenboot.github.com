@@ -1,15 +1,15 @@
 ---
 layout: post
-title: Zurb Foundation and nanoc&#58; Refining the Blog
+title: Zurb Foundation &amp; nanoc&#58; Blog Refinement
 abstract: Creating a blog landing page, and building tag handling helpers to refine the blog
-published: false
+published: true
 ---
 
 Last time we got the basic blog infrastructure in place, but we still need to create a blog landing page, and add support for tags.
 
 ### Haml Everywhere
 
-Before we attack the blog, we'll look at our index page. It is currently the default html page shipped with nanoc; let's replace that with a basic holding page in haml until we address the content and layout for the rest of the site. We're going to write the blog landing page in haml too, so we can change the `Rules` file to reflect that we only need support for haml:
+Before we attack the blog, we'll look at our index page. It is currently the default html page shipped with nanoc; let's replace that with a basic holding page in haml until we address the content and layout for the rest of the site. We're going to write the blog landing page in haml too, which means we can change the `Rules` file to reflect that we only need support for haml:
 
 {% highlight bash %}
 vintageinvite$ subl Rules
@@ -26,9 +26,9 @@ compile '*' do
 end
 {% endhighlight %}
 
-This is just a simple replacement of the `:erb` filter with the `:haml` filter: I know I'm currently not using `:erb` outside of the javascript directory which has its own compilation rules. 
+This is just a simple replacement of the `:erb` filter with the `:haml` filter: I know I'm currently not using `:erb` outside of the javascript directory, which has its own compilation rules. 
 
-I've then changed the index page:
+I've then changed the index page to remove the default copy, and replaced it with a simple header:
 
 {% highlight bash %}
 vintageinvite$ mv content/index.html content/index.haml 
@@ -47,7 +47,7 @@ title: Home
 
 So back to the blog. It needs its own homepage. The design and layout will be addressed in detail later on, but content-wise it should have the latest posts (or a summary/snippet of them), as well as a list of tags (with links) at the minimum.
 
-That needs some extra infrastructure work, so to start with I've put together a page with all the stuff I want to be there, to be replaced with real content later:
+All that needs some extra infrastructure work, so to start with I've put together a page with all the stuff I want to be there, to be replaced with real content later:
 
 {% highlight bash %}
 vintageinvite$ subl content/blog.haml 
@@ -77,9 +77,9 @@ title: Blog
       %li Tag 3
 {% endhighlight %}
 
-(Note: instead of creating a `blog/index.haml`, I've created a `blog.haml`&#151;because of the way the nanoc routes are set up, the address for both of these will be the same: `/blog/index.html` or just `/blog/`, which is exactly what I want.)
+*Note: instead of creating a `blog/index.haml`, I've created a `blog.haml`&#151;because of the way the nanoc routes are set up, the address for both of these will be the same: `/blog/index.html` or just `/blog/`, which is exactly what I want.*
 
-We're using the [Foundation grid](http://foundation.zurb.com/old-docs/f3/grid.php) to create a ten column section for posts and a two column section for the links (nothing special, the real design and layout will happen later). In the main section, each article from the `sorted_articles` collection (which is a function in the nanoc [Blogging](http://nanoc.ws/docs/api/Nanoc/Helpers/Blogging.html) helper) is being rendered with the date and title as the header, and the full content of the article below.
+We're using the [Foundation grid](http://foundation.zurb.com/old-docs/f3/grid.php) to create a ten column section for posts and a two column section for the links (nothing special, the real design and layout will happen later). In the main section, each article from the `sorted_articles` collection (which is from [`Nanoc::Helpers::Blogging`](http://nanoc.ws/docs/api/Nanoc/Helpers/Blogging.html)) is being rendered with the date and title as the header, and the full content of the article below.
 
 The navigation on the right hand side is just a placeholder for the tags section that will need more work. And obviously when we have numerous posts, we don't want to display them all&#151;it's also unlikely we'll want to display the full content for each one. But one bit at a time!
 
@@ -92,12 +92,19 @@ As mentioned in the last article, the `post` template is taking care of the head
 title: "Welcome to the Blog"
 created_at: 2013-05-22 09:00:00 +0000
 kind: article
+tags: [ 'welcome', 'nonsensical' ]
 ---
 
 I will be replaced by a sensical post long before I get published to the web!
 {% endhighlight %}
 
+I've added some (nonsense) tags to the post&#151;notice the syntax, which is that of a Ruby [Array](http://www.ruby-doc.org/core-1.9.3/Array.html) of strings.
+
 We also need a link in our top bar navigation so the blog can be accessed from the home page:
+
+{% highlight bash %}
+vintageinvite$ subl content/layouts/default.haml
+{% endhighlight %}
 
 {% highlight haml %}
   %section
@@ -111,6 +118,10 @@ We also need a link in our top bar navigation so the blog can be accessed from t
 The nanoc helpers we're already using are very useful, but aren't extensive enough for us to implement everything we want in the blog landing page. So we're going to add some of our own helper functions to a new file `blog.rb` in the `lib` directory. I've taken inspiration from another excellent resource, Mario Gutierrez's [nanoc3_blog](https://github.com/mgutz/nanoc3_blog) example. 
 
 Let's start by creating a helper function to return all of the tags for a set of pages&#151;to save time/code, this function will also take care of a simple ranking/item count, returning the tags as a `Hash` or array of pairs of tag and item count:
+
+{% highlight bash %}
+vintageinvite$ subl lib/blog.rb
+{% endhighlight %}
 
 {% highlight ruby %}
 def all_tags(items = nil, sort = false)
@@ -139,6 +150,10 @@ end
 {% endhighlight %}
 
 Rather than sully the `Rules` file with the logic to build these pages, we're calling a helper function `build_tag_pages`. Let's look at how that function is defined:
+
+{% highlight bash %}
+vintageinvite$ subl lib/blog.rb
+{% endhighlight %}
 
 {% highlight ruby %}
 def build_tag_pages(items)
@@ -184,6 +199,10 @@ You'll notice the main changes that have been made: rather than using `sorted_ar
 
 Finally, we want to replace the code in `blog.haml` with a `render` call to this new view.
 
+{% highlight bash %}
+vintageinvite$ subl content/blog.haml
+{% endhighlight %}
+
 {% highlight haml %}
 ---
 title: Blog
@@ -192,3 +211,13 @@ title: Blog
 {% endhighlight %}
 
 We aren't passing a `:tag` to this render call, which means that instead of using a tag it will use the `sorted_articles` which is exactly what we want on the landing page.
+
+Finally compiling and viewing this final site gives us:
+
+![Blog Layout](/asset/image/2013-05-24/zurb-nanoc-blog-3.png "Blog Layout")
+
+And clicking on a tag link:
+
+![Clicking a Tag](/asset/image/2013-05-24/zurb-nanoc-blog-4.png "Clicking a Tag")
+
+Not altogether exciting right now, but at least it's working as expected!

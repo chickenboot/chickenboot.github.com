@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Zurb Foundation and nanoc&#58; Building a Blog
+title: Zurb Foundation &amp; nanoc&#58; Building a Blog
 abstract: Building a basic blog infrastructure in nanoc, using Markdown
 published: true
 ---
@@ -82,7 +82,7 @@ end
 Now we can create a post to test it all:
 
 {% highlight bash %}
-subl content/blog/posts/2013-05-22-welcome-to-the-blog.md
+vintageinvite$ subl content/blog/posts/2013-05-22-welcome-to-the-blog.md
 {% endhighlight %}
 
 <div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.2/content/blog/posts/2013-05-22-welcome-to-the-blog.md">content/blog/posts/2013-05-22-welcome-to-the-blog.md</a></div>

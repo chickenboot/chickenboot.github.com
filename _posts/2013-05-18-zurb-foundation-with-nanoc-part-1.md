@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Zurb Foundation and nanoc&#58; Installation and Setup
+title: Zurb Foundation &amp; nanoc&#58; Installation and Setup
 abstract: Getting started with Zurb Foundation 3 and nanoc&#58; installation, environment and basics
 published: true
 ---

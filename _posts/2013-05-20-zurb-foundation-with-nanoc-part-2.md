@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Zurb Foundation and nanoc&#58; Foundation Javascripts
+title: Zurb Foundation &amp; nanoc&#58; Foundation Javascripts
 abstract: Installing Foundation javascripts, concatenating and minifying and activating the responsive top bar
 published: true
 ---
