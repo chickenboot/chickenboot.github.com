@@ -15,6 +15,7 @@ Before we attack the blog, we'll look at our index page. It is currently the def
 vintageinvite$ subl Rules
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.3/Rules">Rules</a></div>
 {% highlight ruby %}
 compile '*' do
   if item.binary?
@@ -35,6 +36,7 @@ vintageinvite$ mv content/index.html content/index.haml
 vintageinvite$ subl content/index.haml 
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.3/content/index.haml">content/index.haml</a></div>
 {% highlight haml %}
 ---
 title: Home
@@ -87,6 +89,11 @@ The navigation on the right hand side is just a placeholder for the tags section
 
 As mentioned in the last article, the `post` template is taking care of the header for each blog post, so before testing out this new page it would be better to tidy up our only post by removing the "Welcome" header:
 
+{% highlight bash %}
+vintageinvite$ subl content/blog/posts/2013-05-22-welcome-to-the-blog.md
+{% endhighlight %}
+
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.3/content/blog/posts/2013-05-22-welcome-to-the-blog.md">content/blog/posts/2013-05-22-welcome-to-the-blog.md</a></div>
 {% highlight haml %}
 ---
 title: "Welcome to the Blog"
@@ -103,9 +110,10 @@ I've added some (nonsense) tags to the post&#151;notice the syntax, which is tha
 We also need a link in our top bar navigation so the blog can be accessed from the home page:
 
 {% highlight bash %}
-vintageinvite$ subl content/layouts/default.haml
+vintageinvite$ subl layouts/default.haml
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.3/layouts/default.haml">layouts/default.haml</a></div>
 {% highlight haml %}
   %section
     %ul.right
@@ -123,6 +131,7 @@ Let's start by creating a helper function to return all of the tags for a set of
 vintageinvite$ subl lib/blog.rb
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.3/lib/blog.rb">lib/blog.rb</a></div>
 {% highlight ruby %}
 def all_tags(items = nil, sort = false)
   items ||= @items # default to all items if no items passed
@@ -143,6 +152,7 @@ The more complicated task is to create a landing page for each tag. In a dynamic
 vintageinvite$ subl Rules
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.3/Rules">Rules</a></div>
 {% highlight ruby %}
 preprocess do
   build_tag_pages(items)
@@ -155,6 +165,7 @@ Rather than sully the `Rules` file with the logic to build these pages, we're ca
 vintageinvite$ subl lib/blog.rb
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.3/lib/blog.rb">lib/blog.rb</a></div>
 {% highlight ruby %}
 def build_tag_pages(items)
   all_tags(items).each do |tag,count|
@@ -175,6 +186,7 @@ The last thing we need to do is create this `_blog_page` view&#151;for now I wan
 vintageinvite$ subl layouts/_blog_page.haml
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.3/layouts/_blog_page.haml">layouts/_blog_page.haml</a></div>
 {% highlight haml %}
 - posts = defined?(tag) ? items_with_tag(tag) : sorted_articles
 
@@ -203,6 +215,7 @@ Finally, we want to replace the code in `blog.haml` with a `render` call to this
 vintageinvite$ subl content/blog.haml
 {% endhighlight %}
 
+<div class="code-link">File: <a href="https://github.com/chickenboot/vintageinvite/blob/v1.3/content/blog.haml">content/blog.haml</a></div>
 {% highlight haml %}
 ---
 title: Blog
