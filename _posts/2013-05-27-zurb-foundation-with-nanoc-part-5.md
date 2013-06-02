@@ -120,7 +120,7 @@ This is flattening the images into the `assets` folder, but maintaining the subd
 
 ### Falling Back to PNG
 
-In order to cope with the browsers that don't understand svg (we very sadly can't expect all of our customers to have escaped from IE8 or below), I'm borrowing a trick from [Todd Motto](http://toddmotto.com). His article on [png fallbacks](http://toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script/) has a very simple solution if you are using jQuery and Modernizr (which we are already, via Foundation):
+In order to cope with the browsers that don't understand svg (we very sadly can't expect all of our customers to have escaped from IE8 or below), I'm borrowing a trick from [Todd Motto](http://toddmotto.com). His article on [png fallbacks](http://toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script/) has a very simple solution if you are using [jQuery](http://jquery.com) and [Modernizr](http://modernizr.com/) (which we are already, via Foundation):
 
 {% highlight bash %}
 vintageinvite$ subl content/assets/javascripts/app.js
