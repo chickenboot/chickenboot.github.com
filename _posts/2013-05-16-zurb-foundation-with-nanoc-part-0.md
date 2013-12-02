@@ -1,4 +1,4 @@
- ---
+---
 layout: post
 title: Building a company website with Foundation 3 and nanoc
 abstract: An introduction to a series on building a company site with Zurb's Foundation and the static site generator nanoc
