@@ -11,6 +11,7 @@ This is the personal blog of Colin Bradley, freelance technologist and small bus
   * Partner in the delightful wedding invitation business [The Vintage Invite Company](http://thevintageinvite.com)
   * .NET developer in the finance business
   * Ruby on Rails hacker for some private (for now) side projects
+  * Part time web designer/developer (including: [Global Innovation Magazine](http://www.globalinnovationmagazine.com) as well as the above)
 
 ### Acknowledgements
 
