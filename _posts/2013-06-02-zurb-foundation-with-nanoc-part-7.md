@@ -9,7 +9,7 @@ Small post for a change&#151;having had the opportunity to deploy (manually, I'l
 
 ### HTML Conditional Comments in Haml
 
-Although we are using Modernizr, which decorates the `html` tag with classes representing the features the current browser supports, the Foundation team still also use the technique blogged about by [Paul Irish]() about [conditional classes](paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/) in their [example markup](http://foundation.zurb.com/old-docs/f3/index.php), so we need to add these to our default template.
+Although we are using Modernizr, which decorates the `html` tag with classes representing the features the current browser supports, the Foundation team still also use the technique blogged about by [Paul Irish](paulirish.com) about [conditional classes](paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/) in their [example markup](http://foundation.zurb.com/old-docs/f3/index.php), so we need to add these to our default template.
 
 {% highlight bash %}
 vintageinvite$ subl layouts/default.haml
